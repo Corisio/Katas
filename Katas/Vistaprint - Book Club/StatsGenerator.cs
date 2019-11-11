@@ -12,7 +12,15 @@ namespace Vistaprint.BookClub
                 throw new ArgumentNullException(nameof(numbers));
             }
 
-            return Stats.Empty;
+            if (numbers.Count == 0)
+            {
+                return Stats.Empty;
+            }
+
+            return new Stats()
+            {
+                count = 1
+            };
         }
     }
 }

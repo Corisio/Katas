@@ -28,5 +28,14 @@ namespace Vistaprint.BookClub
             Assert.AreEqual(Stats.Empty, stats);
             Assert.AreEqual(0, stats.count);
         }
+
+        [Test]
+        public void ReturnCountOfOne_WhenTheReceivedListHasOnlyOneElement()
+        {
+            var stats = statsGenerator.GetStats(new List<int>() { 1 });
+
+
+            Assert.AreEqual(1, stats.count);
+        }
     }
 }
