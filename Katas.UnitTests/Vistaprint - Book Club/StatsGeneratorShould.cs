@@ -34,7 +34,6 @@ namespace Vistaprint.BookClub
         {
             var stats = statsGenerator.GetStats(new List<int>() { 1 });
 
-
             Assert.AreEqual(1, stats.count);
         }
 
@@ -43,8 +42,15 @@ namespace Vistaprint.BookClub
         {
             var stats = statsGenerator.GetStats(new List<int>() { 1, 2 });
 
-
             Assert.AreEqual(2, stats.count);
+        }
+
+        [Test]
+        public void ReturnElementAsMaximumValue_WhenTheReceivedListHasOnlyOneElement()
+        {
+            var stats = statsGenerator.GetStats(new List<int>() { 1 });
+
+            Assert.AreEqual(1, stats.maximumValue);
         }
     }
 }

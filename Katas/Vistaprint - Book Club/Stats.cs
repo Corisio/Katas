@@ -3,6 +3,7 @@
     public struct Stats
     {
         public int count { get; set; }
+        public int maximumValue { get; set; }
 
         public readonly static Stats Empty = new Stats()
         {
