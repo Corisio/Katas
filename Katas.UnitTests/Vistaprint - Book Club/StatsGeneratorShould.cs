@@ -95,6 +95,18 @@ namespace Vistaprint.BookClub
             Assert.AreEqual(1M, stats.averageValue);
         }
 
+        [TestCase("1,2", 1.5)]
+        [TestCase("1,3", 2)]
+        [TestCase("-1,-3", -2)]
+        [TestCase("1,-3", -1)]
+        [TestCase("1,3,1,1,1", 1.4)]
+        public void ReturnAverageValueOfElements_WhenTheReceivedListHasMultipleElements(string values, decimal expectedAverageValue)
+        {
+            var stats = statsGenerator.GetStats(Parse(values));
+
+            Assert.AreEqual(expectedAverageValue, stats.averageValue);
+        }
+
         private List<int> Parse(string values)
         {
             return values.Split(",").Select(value => int.Parse(value)).ToList();

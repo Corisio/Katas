@@ -5,9 +5,9 @@
         public int count { get; }
         public int maximumValue { get; }
         public int minimumValue { get; }
-        public decimal averageValue { get; set; }
+        public double averageValue { get; set; }
 
-        public Stats(int count, int maximumValue = 0, int minimumValue = 0, decimal averageValue = 0M)
+        public Stats(int count, int maximumValue = 0, int minimumValue = 0, double averageValue = 0)
         {
             this.count = count;
             this.maximumValue = maximumValue;
