@@ -67,6 +67,14 @@ namespace Vistaprint.BookClub
             Assert.AreEqual(expectedMaximumValue, stats.maximumValue);
         }
 
+        [Test]
+        public void ReturnElementAsMinimumValue_WhenTheReceivedListHasOnlyOneElement()
+        {
+            var stats = statsGenerator.GetStats(new List<int>() { 1 });
+
+            Assert.AreEqual(1, stats.minimumValue);
+        }
+
         private List<int> Parse(string values)
         {
             return values.Split(",").Select(value => int.Parse(value)).ToList();

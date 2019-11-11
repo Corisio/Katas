@@ -2,12 +2,17 @@
 {
     public struct Stats
     {
-        public int count { get; set; }
-        public int maximumValue { get; set; }
+        public int count { get; }
+        public int maximumValue { get; }
+        public int minimumValue { get; }
 
-        public readonly static Stats Empty = new Stats()
+        public Stats(int count, int maximumValue = 0, int minimumValue = 0)
         {
-            count = 0
-        };
+            this.count = count;
+            this.maximumValue = maximumValue;
+            this.minimumValue = minimumValue;
+        }
+
+        public readonly static Stats Empty = new Stats(0);
     }
 }
