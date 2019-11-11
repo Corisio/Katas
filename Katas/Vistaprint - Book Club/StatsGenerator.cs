@@ -19,7 +19,7 @@ namespace Vistaprint.BookClub
 
             return new Stats()
             {
-                count = 1
+                count = numbers.Count
             };
         }
     }
