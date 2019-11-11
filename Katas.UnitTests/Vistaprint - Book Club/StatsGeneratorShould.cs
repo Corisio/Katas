@@ -60,6 +60,7 @@ namespace Vistaprint.BookClub
         [TestCase("1,2",2)]
         [TestCase("1,3", 3)]
         [TestCase("-1,-3", -1)]
+        [TestCase("1,-3", 1)]
         public void ReturnMaximumValueOfElements_WhenTheReceivedListHasMultipleElements(string values, int expectedMaximumValue)
         {
             var stats = statsGenerator.GetStats(Parse(values));
@@ -73,6 +74,17 @@ namespace Vistaprint.BookClub
             var stats = statsGenerator.GetStats(new List<int>() { 1 });
 
             Assert.AreEqual(1, stats.minimumValue);
+        }
+
+        [TestCase("1,2", 1)]
+        [TestCase("1,3", 1)]
+        [TestCase("-1,-3", -3)]
+        [TestCase("1,-3", -3)]
+        public void ReturnMinimumValueOfElements_WhenTheReceivedListHasMultipleElements(string values, int expectedMinimumValue)
+        {
+            var stats = statsGenerator.GetStats(Parse(values));
+
+            Assert.AreEqual(expectedMinimumValue, stats.minimumValue);
         }
 
         private List<int> Parse(string values)

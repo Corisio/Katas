@@ -18,7 +18,7 @@ namespace Vistaprint.BookClub
                 return Stats.Empty;
             }
 
-            return new Stats(numbers.Count, numbers.Max(), 1);
+            return new Stats(numbers.Count, numbers.Max(), numbers.Min());
         }
     }
 }
