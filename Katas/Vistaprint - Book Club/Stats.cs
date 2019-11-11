@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Vistaprint.BookClub
+﻿namespace Vistaprint.BookClub
 {
-    public class Stats
+    public struct Stats
     {
-        public void GetStats(List<int> numbers)
+        public int count { get; set; }
+
+        public readonly static Stats Empty = new Stats()
         {
-            throw new ArgumentNullException(nameof(numbers));
-        }
+            count = 0
+        };
     }
 }
