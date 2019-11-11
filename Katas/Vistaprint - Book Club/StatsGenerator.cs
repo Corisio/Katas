@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Vistaprint.BookClub
 {
@@ -20,7 +21,7 @@ namespace Vistaprint.BookClub
             return new Stats()
             {
                 count = numbers.Count,
-                maximumValue = 1
+                maximumValue = numbers.Max()
             };
         }
     }

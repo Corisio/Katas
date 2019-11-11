@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Vistaprint.BookClub
 {
@@ -37,12 +38,15 @@ namespace Vistaprint.BookClub
             Assert.AreEqual(1, stats.count);
         }
 
-        [Test]
-        public void ReturnCountOfElements_WhenTheReceivedListHasMultipleElement()
-        {
-            var stats = statsGenerator.GetStats(new List<int>() { 1, 2 });
 
-            Assert.AreEqual(2, stats.count);
+        [TestCase("1,2", 2)]
+        [TestCase("1,2,3", 3)]
+        [TestCase("-1,-3", 2)]
+        public void ReturnCountOfElements_WhenTheReceivedListHasMultipleElements(string values, int expectedCount)
+        {
+            var stats = statsGenerator.GetStats(Parse(values));
+
+            Assert.AreEqual(expectedCount, stats.count);
         }
 
         [Test]
@@ -51,6 +55,21 @@ namespace Vistaprint.BookClub
             var stats = statsGenerator.GetStats(new List<int>() { 1 });
 
             Assert.AreEqual(1, stats.maximumValue);
+        }
+
+        [TestCase("1,2",2)]
+        [TestCase("1,3", 3)]
+        [TestCase("-1,-3", -1)]
+        public void ReturnMaximumValueOfElements_WhenTheReceivedListHasMultipleElements(string values, int expectedMaximumValue)
+        {
+            var stats = statsGenerator.GetStats(Parse(values));
+
+            Assert.AreEqual(expectedMaximumValue, stats.maximumValue);
+        }
+
+        private List<int> Parse(string values)
+        {
+            return values.Split(",").Select(value => int.Parse(value)).ToList();
         }
     }
 }
